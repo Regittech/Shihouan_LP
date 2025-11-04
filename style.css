@@ -855,6 +855,7 @@
             background-color: #000000;
             display: flex;
             justify-content: center;
+            padding-top: 10px;
         }
 
         .footer-inner {
@@ -920,6 +921,7 @@
             height: 380.16px;
             display: block;
             margin-bottom: -80px;
+            margin-top: 5px;
         }
 
         .footer-image {
