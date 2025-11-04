@@ -21,7 +21,12 @@
         <!-- ヘッダー -->
         <header>
             <div class="header-content">
-                <nav>
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="nav-menu">
                     <a href="#philosophy" class="active">料亭の想い</a>
                     <a href="#ingredients">素材</a>
                     <a href="#space">空間</a>
@@ -29,11 +34,20 @@
                 </nav>
             </div>
         </header>
-        <!-- NEWSバッジ -->
+        <!-- NEWSバッジ（PC版用） -->
         <div class="news-badge">
             <span class="news-badge-new">NEW</span>
             <span class="news-badge-date">2025/11/01</span>
             <span class="news-badge-text">秋のメニューをぜひご賞味ください。</span>
+        </div>
+    </section>
+
+    <!-- お知らせバーセクション（SP版用） -->
+    <section class="news-banner-section">
+        <div class="news-banner-inner">
+            <span class="news-banner-label">NEW</span>
+            <span class="news-banner-date">2025/11/01</span>
+            <span class="news-banner-text">秋のメニューをぜひご賞味ください。</span>
         </div>
     </section>
 
@@ -84,10 +98,10 @@
 
             <div class="ingredients-image-bottom">
                 <img src="img/TP2_1515 1.png" alt="料理">
+                <div class="ingredients-overlay-left"></div>
+                <div class="ingredients-overlay-top"></div>
+                <div class="ingredients-overlay-bottom"></div>
             </div>
-            <div class="ingredients-overlay-left"></div>
-            <div class="ingredients-overlay-top"></div>
-            <div class="ingredients-overlay-bottom"></div>
             <div class="ingredients-nami">
                 <img src="img/nami.png" alt="波">
             </div>
@@ -127,18 +141,18 @@
                         組子細工の扉と柔らかな灡りが織りなす空間で、特別なひとときを。
                     </p>
                 </div>
-                <h3 class="space-capacity-fourteen">14名様まで</h3>
 
                 <div class="space-image-main">
                     <img src="img/DSC04591 1.png" alt="店内">
                 </div>
+                <h3 class="space-capacity-fourteen">14名様まで</h3>
             </div>
 
             <div class="space-flower">
                 <img src="img/flower1.png" alt="花">
             </div>
 
-            <div style="padding: 0 var(--content-padding); margin-top: 600px;">
+            <div class="space-description-wrapper">
                 <p class="space-description-room">
                     白木の格子戸に和モダンな雰囲気のテーブル席個室を<br>
                     お人数にお合わせしてご用意致しております。<br>
@@ -157,7 +171,7 @@
                 </div>
             </div>
 
-            <div style="margin-top: 40px;">
+            <div>
                 <img src="img/IMG_8732 1.png" alt="カウンター" class="space-image-tall">
             </div>
         </div>
@@ -246,5 +260,19 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+
+        // メニューリンクをクリックしたらメニューを閉じる
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
