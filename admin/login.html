@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理者ログイン | 紫芳庵</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-box">
+            <h1 class="login-title">紫芳庵 管理画面</h1>
+            <p class="login-subtitle">お知らせ管理システム</p>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="password">パスワード</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="パスワードを入力"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div id="error-message" class="error-message" style="display: none;"></div>
+
+                <button type="submit" class="btn-primary">ログイン</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/admin-auth.js"></script>
+</body>
+</html>

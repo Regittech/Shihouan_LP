@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">お知らせ | 紫芳庵</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Hiragino+Sans:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600&family=Noto+Serif+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/news.css">
+</head>
+<body>
+    <!-- ヘッダー（TOPページと同じ構造） -->
+    <header class="news-header">
+        <div class="news-header-content">
+            <!-- ハンバーガーメニュー -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- ナビゲーション -->
+            <nav id="nav-menu" class="news-nav">
+                <a href="/index.html#philosophy">料亭の想い</a>
+                <a href="/index.html#ingredients">素材</a>
+                <a href="/index.html#space">空間</a>
+                <a href="/index.html#access">アクセス</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Logo Header -->
+    <div class="logo-header">
+        <img src="/img/shihouan_logo_black.png" alt="紫芳庵">
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Background Layers -->
+        <div class="back-5"></div>
+        <div class="back-1"></div>
+        <div class="back-4"></div>
+
+        <!-- Content Container -->
+        <div class="content-container">
+            <!-- Page Title -->
+            <h1 class="page-title">お知らせ</h1>
+
+            <!-- Article Date -->
+            <div class="article-date" id="article-date">2025年11月01日</div>
+
+            <!-- Article Title -->
+            <h2 class="article-title" id="article-title">お知らせタイトル</h2>
+
+            <!-- Article Body -->
+            <div class="article-body" id="article-body">
+                <p>本文がここに表示されます。</p>
+            </div>
+
+            <!-- Images Container -->
+            <div id="article-images-container">
+                <!-- 画像が動的に挿入されます -->
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <a href="/index.html" class="back-to-top">
+            <span class="back-to-top-text">TOPへ戻る</span>
+        </a>
+        <div class="back-to-top-line"></div>
+    </div>
+
+    <!-- フッター -->
+    <footer>
+        <div class="footer-inner">
+            <img src="/img/DSC04608.png" alt="" class="footer-image">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-hours">
+                        <h3>営業時間</h3>
+                        <p>17:00-22:30</p>
+                    </div>
+                    <div class="footer-closed" style="margin-top: 64px;">
+                        <h3>定休日</h3>
+                        <p>日月祝</p>
+                    </div>
+                </div>
+                <img src="/img/shihouan_logo.png" alt="紫芳庵" class="footer-logo">
+                <div>
+                    <div class="footer-contact" style="margin-bottom: 48px; color: #000;">
+                        <h3 style="color: #000;">お問い合わせ</h3>
+                        <div class="footer-phone" style="color: #000;">03-6435-1320</div>
+                    </div>
+                    <div class="footer-address" style="color: #000;">
+                        住所:非公開<br>
+                        JR田町駅東口より徒歩7分、都営浅草線 三田駅より徒歿8分
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">Copyright Yokohama Warehouse CO.,LTD All rights reserved</p>
+                <a href="#" class="footer-pagetop">Page top</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- お知らせ詳細表示スクリプト -->
+    <script src="/js/news-detail.js"></script>
+
+    <!-- ハンバーガーメニュー機能 -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav-menu');
+            nav.classList.toggle('active');
+        }
+
+        // メニューリンクをクリックしたらメニューを閉じる
+        document.querySelectorAll('.news-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.getElementById('nav-menu');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Page topリンクのスムーススクロール
+        document.querySelector('.footer-pagetop')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>

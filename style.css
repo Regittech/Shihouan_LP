@@ -996,6 +996,7 @@
     html {
         width: 100%;
         overflow-x: hidden;
+        scroll-padding-top: 60px;
     }
 
     body {
