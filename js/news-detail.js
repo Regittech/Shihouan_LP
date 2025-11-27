@@ -85,6 +85,14 @@ class NewsDetail {
     // ページタイトル
     document.getElementById('page-title').textContent = `${newsItem.title} | 紫芳庵`;
 
+    // メタディスクリプション（本文の最初の100文字を使用）
+    const plainText = this.extractPlainText(newsItem.body);
+    const description = plainText.substring(0, 100) + (plainText.length > 100 ? '...' : '');
+    const metaDescription = document.getElementById('page-description');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', `${newsItem.title} - ${description}`);
+    }
+
     // 公開日
     const formattedDate = this.formatDateJapanese(newsItem.publishDate);
     document.getElementById('article-date').textContent = formattedDate;
@@ -404,6 +412,16 @@ class NewsDetail {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  /**
+   * HTMLタグを除去してプレーンテキストを抽出
+   */
+  extractPlainText(html) {
+    if (!html) return '';
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    return div.textContent || div.innerText || '';
   }
 }
 
