@@ -1,7 +1,34 @@
 {
-    "news": [],
+    "news": [
+        {
+            "id": "news-010",
+            "title": "サイトがオープンいたしました",
+            "slug": "gfgfhg",
+            "publishDate": "2025-12-03",
+            "publishTime": "09:00",
+            "body": "<p>サイトがオープンいたしました<\/p>",
+            "images": [],
+            "status": "published",
+            "scheduledDate": null,
+            "createdAt": "2025-12-03T05:02:41.177Z",
+            "updatedAt": "2025-12-03T05:02:41.177Z"
+        },
+        {
+            "id": "news-009",
+            "title": "今月のおすすめメニュー",
+            "slug": "ossm1203",
+            "publishDate": "2025-11-05",
+            "publishTime": "09:00",
+            "body": "<p>今月のおすすめは『<strong>すっぽんの雑炊』<\/strong>でございます。<\/p><p>仕入れ状況により、お献立は変更となりますので、<\/p><p>ご希望の方はご予約時にお申し付けいただければ幸いでございます。<\/p>",
+            "images": [],
+            "status": "published",
+            "scheduledDate": null,
+            "createdAt": "2025-12-03T05:02:09.586Z",
+            "updatedAt": "2025-12-03T06:01:30.247Z"
+        }
+    ],
     "settings": {
         "adminPasswordHash": "020dda5b9cec56b395090b523f4f7aa1c0702daee75090a6daa98c13072242d7",
-        "nextId": 7
+        "nextId": 15
     }
 }
