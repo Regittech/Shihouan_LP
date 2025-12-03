@@ -571,9 +571,44 @@ class AdminDashboard {
       return;
     }
 
+    // 削除対象のお知らせを取得（HTMLファイル削除用にslugを保持）
+    const newsToDelete = this.newsData.news.find(n => n.id === id);
+    const slugToDelete = newsToDelete ? newsToDelete.slug : null;
+
     this.newsData.news = this.newsData.news.filter(n => n.id !== id);
     await this.saveToServer();
+
+    // HTMLファイルも削除
+    if (slugToDelete) {
+      await this.deleteNewsDetailPage(slugToDelete);
+    }
+
     this.renderNewsTable();
+  }
+
+  /**
+   * お知らせ詳細ページのHTMLファイルを削除
+   */
+  async deleteNewsDetailPage(slug) {
+    try {
+      const response = await fetch('/api/delete-news-page.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ slug: slug })
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        console.error('詳細ページの削除に失敗しました:', result.error);
+      } else {
+        console.log(`お知らせ詳細ページを削除しました: ${result.path}`);
+      }
+    } catch (error) {
+      console.error('詳細ページの削除に失敗しました:', error);
+    }
   }
 
   /**

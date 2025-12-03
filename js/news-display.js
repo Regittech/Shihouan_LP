@@ -16,6 +16,7 @@ class NewsDisplay {
     try {
       await this.loadNewsData();
       this.displayLatestBadge();
+      this.displaySpBanner();
       this.displayNewsList();
     } catch (error) {
       console.error('お知らせの読み込みに失敗しました:', error);
@@ -26,7 +27,8 @@ class NewsDisplay {
    * JSONデータを読み込む
    */
   async loadNewsData() {
-    const response = await fetch(this.dataUrl);
+    // キャッシュを回避するためタイムスタンプを付与
+    const response = await fetch(this.dataUrl + '?t=' + Date.now());
     if (!response.ok) {
       throw new Error('データの読み込みに失敗しました');
     }
@@ -86,6 +88,38 @@ class NewsDisplay {
     // クリックで詳細ページに遷移
     badgeElement.style.cursor = 'pointer';
     badgeElement.onclick = () => {
+      window.location.href = `/news/${latest.slug}.html`;
+    };
+  }
+
+  /**
+   * SP版バナーに最新1件を表示
+   */
+  displaySpBanner() {
+    const bannerInner = document.querySelector('.news-banner-inner');
+    if (!bannerInner) return;
+
+    const publishedNews = this.getPublishedNews();
+    if (publishedNews.length === 0) {
+      const bannerSection = document.querySelector('.news-banner-section');
+      if (bannerSection) {
+        bannerSection.style.display = 'none';
+      }
+      return;
+    }
+
+    const latest = publishedNews[0];
+    const formattedDate = this.formatDate(latest.publishDate);
+
+    bannerInner.innerHTML = `
+      <span class="news-banner-label">NEW</span>
+      <span class="news-banner-date">${formattedDate}</span>
+      <span class="news-banner-text">${this.escapeHtml(latest.title)}</span>
+    `;
+
+    // クリックで詳細ページに遷移
+    bannerInner.style.cursor = 'pointer';
+    bannerInner.onclick = () => {
       window.location.href = `/news/${latest.slug}.html`;
     };
   }

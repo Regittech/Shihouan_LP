@@ -48,7 +48,8 @@ class NewsDetail {
    * お知らせデータを読み込む
    */
   async loadNewsItem() {
-    const response = await fetch(this.dataUrl);
+    // キャッシュを回避するためタイムスタンプを付与
+    const response = await fetch(this.dataUrl + '?t=' + Date.now());
     if (!response.ok) {
       throw new Error('データの読み込みに失敗しました');
     }
